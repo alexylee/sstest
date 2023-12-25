@@ -182,7 +182,7 @@ class Destination:
 #########################################################################################
 class MainMenuView(View):
     SCAN = ("스캔", SeedSignerIconConstants.SCAN)
-    SEEDS = ("시트", SeedSignerIconConstants.SEEDS)
+    SEEDS = ("시드", SeedSignerIconConstants.SEEDS)
     TOOLS = ("도구", SeedSignerIconConstants.TOOLS)
     SETTINGS = ("설정", SeedSignerIconConstants.SETTINGS)
 
