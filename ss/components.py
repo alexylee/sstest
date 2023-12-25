@@ -206,18 +206,18 @@ class Fonts(Singleton):
 
     @classmethod
     def get_font(cls, font_name, size, file_extension: str = "ttf") -> ImageFont.FreeTypeFont:
-        # Cache already-loaded fonts
-        if font_name not in cls.fonts:
-            cls.fonts[font_name] = {}
-        
         if font_name in [GUIConstants.ICON_FONT_NAME__FONT_AWESOME, GUIConstants.ICON_FONT_NAME__SEEDSIGNER]:
             file_extension = "otf"
-
+    
         if font_name.endswith(".otf") or font_name.endswith(".ttf"):
             font_file_name = font_name
             font_name = font_name[:-4]
         else:
             font_file_name = f"{font_name}.{file_extension}"
+    
+        # Cache already-loaded fonts
+        if font_name not in cls.fonts:
+            cls.fonts[font_name] = {}
         
         if size not in cls.fonts[font_name]:
             try:
