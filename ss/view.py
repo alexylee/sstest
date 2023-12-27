@@ -218,14 +218,14 @@ class MainMenuView(View):
 
 
 class PowerOptionsView(View):
-    RESET = ("Restart", SeedSignerIconConstants.RESTART)
-    POWER_OFF = ("Power Off", SeedSignerIconConstants.POWER)
+    RESET = ("재시작", SeedSignerIconConstants.RESTART)
+    POWER_OFF = ("종료", SeedSignerIconConstants.POWER)
 
     def run(self):
         button_data = [self.RESET, self.POWER_OFF]
         selected_menu_num = self.run_screen(
             LargeButtonScreen,
-            title="Reset / Power",
+            title="리셋 / 전원",
             show_back_button=True,
             button_data=button_data
         )
@@ -306,7 +306,7 @@ class NotYetImplementedView(View):
 
 @dataclass
 class ErrorView(View):
-    title: str = "Error"
+    title: str = "에러"
     show_back_button: bool = True
     status_headline: str = None
     text: str = None
@@ -330,9 +330,9 @@ class ErrorView(View):
 
 @dataclass
 class NetworkMismatchErrorView(ErrorView):
-    title: str = "Network Mismatch"
+    title: str = "불일치한 네트워크"
     show_back_button: bool = False
-    button_text: str = "Change Setting"
+    button_text: str = "설정 변경"
     next_destination: Destination = None
 
 
@@ -355,7 +355,7 @@ class UnhandledExceptionView(View):
     def run(self):
         self.run_screen(
             DireWarningScreen,
-            title="System Error",
+            title="시스템 에러",
             status_headline=self.error[0],
             text=self.error[1] + "\n" + self.error[2],
             button_data=["OK"],
@@ -369,8 +369,8 @@ class UnhandledExceptionView(View):
 
 @dataclass
 class OptionDisabledView(View):
-    UPDATE_SETTING = "Update Setting"
-    DONE = "Done"
+    UPDATE_SETTING = "설정 수정"
+    DONE = "완료"
     settings_attr: str
 
     def __post_init__(self):
@@ -410,7 +410,7 @@ class RemoveMicroSDWarningView(View):
     def run(self):
         self.run_screen(
             WarningScreen,
-            title="Security Tip",
+            title="보안 팁",
             status_icon_name=FontAwesomeIconConstants.SDCARD,
             status_headline="",
             text="For maximum security,\nremove the MicroSD card\nbefore continuing.",
