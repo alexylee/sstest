@@ -23,6 +23,8 @@ for s in camera.capture_continuous(stream, format="jpeg", use_video_port=True):
     img = Image.open(stream)
     show(img)
     sleep(1)
+    stream.seek(0)
+    stream.truncate()
     i = i + 1
     if (i > 10):
         break
