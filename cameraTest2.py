@@ -1,6 +1,8 @@
 from picamera import PiCamera
 from picamera.array import PiRGBArray
 from time import sleep
+from io import BytesIO
+from PIL import Image
 
 def show(img):
     from PIL import Image, ImageDraw
@@ -12,18 +14,17 @@ def show(img):
 
 
 camera = PiCamera(resolution=(240, 240), framerate=24)
-rawCapture = PiRGBArray(camera, size=(240, 240))
+stream = BytesIO()
 
 i = 0
-for stream in camera.capture_continuous(rawCapture, format="rgb", use_video_port=True):
+for s in camera.capture_continuous(stream, format="jpeg", use_video_port=True):
     print('frame#', i)
-    frame = stream.array
-    show(frame)
-    rawCapture.truncate(0)
+    stream.seek(0)
+    img = Image.open(stream)
+    show(img)
     sleep(1)
     i = i + 1
     if (i > 10):
         break
 
-rawCapture.close()
 camera.close()
