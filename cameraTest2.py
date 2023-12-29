@@ -29,4 +29,5 @@ for s in camera.capture_continuous(stream, format="jpeg", use_video_port=True):
     if (i > 10):
         break
 
+stream.close()
 camera.close()
