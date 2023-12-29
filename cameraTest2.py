@@ -1,4 +1,5 @@
-from picamera import PiCamera, PiRGBArray
+from picamera import PiCamera
+from picamera.array import PiRGBArray
 from time import sleep
 
 def show(img):
