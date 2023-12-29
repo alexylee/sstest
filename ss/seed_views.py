@@ -48,11 +48,11 @@ class SeedsMenuView(View):
         button_data = []
         for seed in self.seeds:
             button_data.append((seed["fingerprint"], SeedSignerIconConstants.FINGERPRINT))
-        button_data.append("Load a seed")
+        button_data.append("시드 가져오기")
 
         selected_menu_num = self.run_screen(
             ButtonListScreen,
-            title="In-Memory Seeds",
+            title="메모리 시드들",
             is_button_text_centered=False,
             button_data=button_data
         )
@@ -174,7 +174,7 @@ class LoadSeedView(View):
         ]
         selected_menu_num = self.run_screen(
             ButtonListScreen,
-            title="시드 가져오기",
+            title="시드 생성",
             is_button_text_centered=False,
             button_data=button_data
         )
@@ -426,14 +426,14 @@ class SeedDiscardView(View):
     Views for actions on individual seeds:
 ****************************************************************************"""
 class SeedOptionsView(View):
-    SCAN_PSBT = ("Scan PSBT", SeedSignerIconConstants.QRCODE)
-    VERIFY_ADDRESS = "Verify Addr"
-    EXPORT_XPUB = "Export Xpub"
-    EXPLORER = "Address Explorer"
-    SIGN_MESSAGE = "Sign Message"
-    BACKUP = ("Backup Seed", None, None, None, SeedSignerIconConstants.CHEVRON_RIGHT)
-    BIP85_CHILD_SEED = "BIP-85 Child Seed"
-    DISCARD = ("Discard Seed", None, None, "red")
+    SCAN_PSBT = ("PSBT 스캔", SeedSignerIconConstants.QRCODE)
+    VERIFY_ADDRESS = "주소 검증"
+    EXPORT_XPUB = "Xpub 내보내기"
+    EXPLORER = "주소 탐색기"
+    SIGN_MESSAGE = "메시지 사인"
+    BACKUP = ("시드 백업", None, None, None, SeedSignerIconConstants.CHEVRON_RIGHT)
+    BIP85_CHILD_SEED = "BIP-85 자식 시드"
+    DISCARD = ("시드 삭제", None, None, "red")
 
 
     def __init__(self, seed_num: int):

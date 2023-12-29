@@ -25,8 +25,8 @@ from .view import View, Destination, BackStackView
 
 
 class ToolsMenuView(View):
-    IMAGE = (" 시드 생성", FontAwesomeIconConstants.CAMERA)
-    DICE = ("시드 생성", FontAwesomeIconConstants.DICE)
+    IMAGE = ("카메라 시드 생성", FontAwesomeIconConstants.CAMERA)
+    DICE = ("주사위 시드 생성", FontAwesomeIconConstants.DICE)
     KEYBOARD = ("12/24 단어 계산", FontAwesomeIconConstants.KEYBOARD)
     EXPLORER = "주소 탐색기"
     ADDRESS = "주소 확인"
@@ -116,12 +116,12 @@ class ToolsImageEntropyFinalImageView(View):
 
 class ToolsImageEntropyMnemonicLengthView(View):
     def run(self):
-        TWELVE_WORDS = "12 words"
-        TWENTYFOUR_WORDS = "24 words"
+        TWELVE_WORDS = "12 단어"
+        TWENTYFOUR_WORDS = "24 단어"
         button_data = [TWELVE_WORDS, TWENTYFOUR_WORDS]
 
         selected_menu_num = ButtonListScreen(
-            title="Mnemonic Length?",
+            title="니모닉 길이?",
             button_data=button_data,
         ).display()
 
