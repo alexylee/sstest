@@ -93,7 +93,6 @@ class ToolsImageEntropyLivePreviewScreen(BaseScreen):
                 # before we add the currest frame.
                 preview_images.pop(0)
             preview_images.append(frame)
-            print("*** len(preview_images): ", len(preview_images))
 
 
 

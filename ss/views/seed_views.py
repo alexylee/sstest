@@ -211,7 +211,7 @@ class SeedMnemonicEntryView(View):
     def run(self):
         ret = self.run_screen(
             seed_screens.SeedMnemonicEntryScreen,
-            title=f"Seed Word #{self.cur_word_index + 1}",  # Human-readable 1-indexing!
+            title=f"시드 단어 #{self.cur_word_index + 1}",  # Human-readable 1-indexing!
             initial_letters=list(self.cur_word) if self.cur_word else ["a"],
             wordlist=Seed.get_wordlist(wordlist_language_code=self.settings.get_value(SettingsConstants.SETTING__WORDLIST_LANGUAGE)),
         )
@@ -258,8 +258,8 @@ class SeedMnemonicEntryView(View):
 
 
 class SeedMnemonicInvalidView(View):
-    EDIT = "Review & Edit"
-    DISCARD = ("Discard", None, None, "red")
+    EDIT = "리뷰 및 수정"
+    DISCARD = ("삭제", None, None, "red")
 
     def __init__(self):
         super().__init__()
@@ -287,8 +287,8 @@ class SeedMnemonicInvalidView(View):
 
 
 class SeedFinalizeView(View):
-    FINALIZE = "Done"
-    PASSPHRASE = "BIP-39 Passphrase"
+    FINALIZE = "완료"
+    PASSPHRASE = "BIP-39 암호문구"
 
     def __init__(self):
         super().__init__()
@@ -341,8 +341,8 @@ class SeedReviewPassphraseView(View):
     """
         Display the completed passphrase back to the user.
     """
-    EDIT = "Edit passphrase"
-    DONE = "Done"
+    EDIT = "암호문구 수정"
+    DONE = "완료"
 
     def __init__(self):
         super().__init__()
@@ -381,8 +381,8 @@ class SeedReviewPassphraseView(View):
 
             
 class SeedDiscardView(View):
-    KEEP = "Keep Seed"
-    DISCARD = ("Discard", None, None, "red")
+    KEEP = "시드 보관"
+    DISCARD = ("시드 삭제", None, None, "red")
 
     def __init__(self, seed_num: int = None):
         super().__init__()
@@ -399,9 +399,9 @@ class SeedDiscardView(View):
         fingerprint = self.seed.get_fingerprint(self.settings.get_value(SettingsConstants.SETTING__NETWORK))
         selected_menu_num = self.run_screen(
             WarningScreen,
-            title="Discard Seed?",
+            title="시드 삭제?",
             status_headline=None,
-            text=f"Wipe seed {fingerprint} from the device?",
+            text=f"디바이스에서 {fingerprint} 를 삭제?",
             show_back_button=False,
             button_data=button_data,
         )
@@ -924,7 +924,7 @@ class SeedWordsWarningView(View):
 
         selected_menu_num = self.run_screen(
             DireWarningScreen,
-            text="""Never input your seed phrase into a device that connects to the internet.""",
+            text="""인터넷이 연결된 장치에서 시드 문구를 절대 입력하지 마세요.""",
         )
 
         if selected_menu_num == 0:
@@ -949,8 +949,8 @@ class SeedWordsView(View):
 
 
     def run(self):
-        NEXT = "Next"
-        DONE = "Done"
+        NEXT = "다음"
+        DONE = "완료"
 
         # Slice the mnemonic to our current 4-word section
         words_per_page = 4  # TODO: eventually make this configurable for bigger screens?
@@ -960,7 +960,7 @@ class SeedWordsView(View):
             title = f"""Child #{self.bip85_data["child_index"]}"""
         else:
             mnemonic = self.seed.mnemonic_display_list
-            title = "Seed Words"
+            title = "시드 단어들"
         words = mnemonic[self.page_index*words_per_page:(self.page_index + 1)*words_per_page]
 
         button_data = []
@@ -1119,8 +1119,8 @@ class SeedWordsBackupTestPromptView(View):
 
 
     def run(self):
-        VERIFY = "Verify"
-        SKIP = "Skip"
+        VERIFY = "시드 재검증"
+        SKIP = "검증 생략"
         button_data = [VERIFY, SKIP]
         selected_menu_num = seed_screens.SeedWordsBackupTestPromptScreen(
             button_data=button_data,
