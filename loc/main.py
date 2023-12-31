@@ -2,8 +2,7 @@ from seedsigner.controller import Controller
 
 # l10n
 import gettext
-_ = gettext.gettext
-i18n = gettext.translation("seedsigner", './locales', fallback=True, languages=['ko','en'])
+i18n = gettext.translation("seedsigner", './seedsigner/locales', fallback=True, languages=['ko','en'])
 i18n.install()
 
 
