@@ -1,4 +1,3 @@
-import gettext
 from dataclasses import dataclass
 from typing import Type
 
@@ -9,6 +8,8 @@ from seedsigner.models.settings import Settings, SettingsConstants
 from seedsigner.models.settings_definition import SettingsDefinition
 from seedsigner.models.threads import BaseThread
 
+import gettext
+_ = gettext.gettext
 
 class BackStackView:
     """
